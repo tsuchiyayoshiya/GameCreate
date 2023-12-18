@@ -1,20 +1,28 @@
 #include "PlayScene.h"
 #include"BackGround.h"
 #include"Player.h"
+#include "Stage.h"
+#include"KeyItem.h"
+
+#include "Engine/Camera.h"
 #include "Engine/Image.h"
 
 
 //コンストラクタ
 PlayScene::PlayScene(GameObject* parent)
-    : GameObject(parent, "PlayScene"), hPict_(-1)
+    : GameObject(parent, "PlayScene"),hModel_(-1)
 {
 }
 
 //初期化
 void PlayScene::Initialize()
 {
-    Instantiate<BackGround>(this);
+    //カメラの位置
+    Camera::SetPosition(XMFLOAT3(7.5, 10, -5));
+    Camera::SetTarget(XMFLOAT3(7.5, 2, 3));
+    Instantiate<Stage>(this);
     Instantiate<Player>(this);
+    Instantiate<KeyItem>(this);
 }
 
 //更新

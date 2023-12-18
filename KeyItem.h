@@ -2,13 +2,13 @@
 #include "Engine/GameObject.h"
 
 //テストシーンを管理するクラス
-class PlayScene : public GameObject
+class KeyItem : public GameObject
 {
 	int hModel_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	PlayScene(GameObject* parent);
+	KeyItem(GameObject* parent);
 
 	//初期化
 	void Initialize() override;

@@ -98,7 +98,8 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="KeyItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -173,7 +174,8 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Socket.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="KeyItem.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

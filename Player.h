@@ -1,10 +1,15 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Stage.h"
 
 //テストシーンを管理するクラス
 class Player : public GameObject
 {
-	int hPict_;    //画像番号
+	int hModel_;    //モデル番号
+	int nowHp_, maxHp_;
+	XMFLOAT3 prevPosition_;
+
+	Stage* pStage;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
