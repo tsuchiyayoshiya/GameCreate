@@ -41,9 +41,7 @@ void KeyItem::Update()
 //•`‰æ
 void KeyItem::Draw()
 {
-    transform_.position_.z = 5;
-    transform_.position_.x = 5;
-    transform_.position_.y = 3;
+    transform_.position_ = { 5,3,5 };
 
     transform_.rotate_.y = 180;
 
