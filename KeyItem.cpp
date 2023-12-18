@@ -3,7 +3,8 @@
 #include"Player.h"
 #include "Stage.h"
 
-#include "Engine/BoxCollition"
+#include "Engine/SphereCollider.h"
+#include "Engine/BoxCollider.h"
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
 #include "Engine/Model.h"
@@ -18,7 +19,8 @@ KeyItem::KeyItem(GameObject* parent)
 //‰Šú‰»
 void KeyItem::Initialize()
 {
-
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, -0.3f, 0), XMFLOAT3(0.5, 0.5, 0.5));
+    AddCollider(collision);
     hModel_ = Model::Load("Key.fbx");
     assert(hModel_ >= 0);
 }
@@ -27,7 +29,7 @@ void KeyItem::Initialize()
 void KeyItem::Update()
 {
     bool yPosition = false;
-    
+    /*
     transform_.position_.y += 0.01f;
     if (transform_.position_.y == 1)
     {
@@ -37,12 +39,13 @@ void KeyItem::Update()
     {
         transform_.position_.y -= 0.01f;
     }
+    */
 }
 
 //•`‰æ
 void KeyItem::Draw()
 {
-    transform_.position_ = { 5,3,5 };
+    transform_.position_ = { 5,1,5 };
 
     transform_.rotate_.y = 180;
 
@@ -56,3 +59,4 @@ void KeyItem::Draw()
 void KeyItem::Release()
 {
 }
+

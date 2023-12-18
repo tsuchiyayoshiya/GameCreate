@@ -1,6 +1,6 @@
 #include "Player.h"
 
-
+#include "Engine/SphereCollider.h"
 #include "Engine/Camera.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
@@ -17,6 +17,8 @@ Player::Player(GameObject* parent)
 //初期化
 void Player::Initialize()
 {
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0.2, 0), 0.5f);
+	AddCollider(collision);
 	//モデルデータのロード
 	hModel_ = Model::Load("Player.fbx");
 	assert(hModel_ >= 0);
@@ -172,4 +174,16 @@ void Player::Draw()
 //開放
 void Player::Release()
 {
+}
+
+//何かに当たった
+void Player::OnCollision(GameObject* pTarget)
+{
+	//弾に当たったとき
+	if (pTarget->GetObjectName() == "KeyItem")
+	{
+		//当たったときの処理
+		pTarget->KillMe();//当たった弾を消す
+		//this->KillMe();
+	}
 }
