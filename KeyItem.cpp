@@ -3,6 +3,7 @@
 #include"Player.h"
 #include "Stage.h"
 
+#include "Engine/BoxCollition"
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
 #include "Engine/Model.h"

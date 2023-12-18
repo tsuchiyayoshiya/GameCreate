@@ -156,24 +156,6 @@ void Player::Update()
 		transform_.position_.z = (float)((int)transform_.position_.z) + 0.3f;
 	}
 
-
-	if (Input::IsKey(DIK_M))
-	{
-		nowHp_ += 30;
-		if (nowHp_ > maxHp_)
-		{
-			nowHp_ = maxHp_;
-		}
-	}
-	if (Input::IsKey(DIK_N))
-	{
-		nowHp_ -= 30;
-		if (nowHp_ < 0)
-		{
-			nowHp_ = 0;
-		}
-	}
-
 	
 	
 }
