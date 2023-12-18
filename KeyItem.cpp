@@ -41,9 +41,13 @@ void KeyItem::Update()
 //•`‰æ
 void KeyItem::Draw()
 {
-    transform_.position_.z = 10;
-    transform_.position_.x = 1;
+    transform_.position_.z = 5;
+    transform_.position_.x = 5;
     transform_.position_.y = 3;
+
+    transform_.rotate_.y = 180;
+
+    transform_.scale_ = { 0.2,0.2,0.2 };
 
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
