@@ -1,25 +1,14 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "Stage.h"
-#include "Engine/Text.h"
 
 //テストシーンを管理するクラス
-class Player : public GameObject
+class Complete : public GameObject
 {
-	int hModel_;    //モデル番号
-	int nowHp_, maxHp_;
-	XMFLOAT3 prevPosition_;
-
-	Stage* pStage;
-
-	
-
-	Text* pText;
-
+	int hModel_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	Player(GameObject* parent);
+	Complete(GameObject* parent);
 
 	//初期化
 	void Initialize() override;
@@ -33,5 +22,5 @@ public:
 	//開放
 	void Release() override;
 
-	
+	//void OnCollision(GameObject* pTarget) override;
 };

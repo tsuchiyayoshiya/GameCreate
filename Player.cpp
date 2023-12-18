@@ -10,7 +10,7 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), ItemKill(false)
+	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), pText(nullptr)
 {
 	pStage = (Stage*)FindObject("Stage");
 }
@@ -18,6 +18,10 @@ Player::Player(GameObject* parent)
 //初期化
 void Player::Initialize()
 {
+	//鍵の所得情報
+	pText = new Text;
+	pText->Initialize();
+
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0.2, 0), 0.5f);
 	AddCollider(collision);
 	//モデルデータのロード
@@ -177,21 +181,3 @@ void Player::Release()
 {
 }
 
-//何かに当たった
-void Player::OnCollision(GameObject* pTarget)
-{
-	
-	//弾に当たったとき
-	if (pTarget->GetObjectName() == "KeyItem")
-	{
-		
-		//当たったときの処理
-		pTarget->KillMe();//当たった弾を消す
-		
-		ItemKill = true;
-	}
-	if (ItemKill == true)
-	{
-		Initialize<KeyItem>(this);
-	}
-}

@@ -23,6 +23,7 @@ void PlayScene::Initialize()
     Instantiate<Stage>(this);
     Instantiate<Player>(this);
     Instantiate<KeyItem>(this);
+   // void KeyItem::OnCollision(GameObject * pTarget);
 }
 
 //XV

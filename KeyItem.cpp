@@ -2,6 +2,7 @@
 #include"BackGround.h"
 #include"Player.h"
 #include "Stage.h"
+#include "Complete.h"
 
 #include "Engine/SphereCollider.h"
 #include "Engine/BoxCollider.h"
@@ -12,7 +13,7 @@
 
 //コンストラクタ
 KeyItem::KeyItem(GameObject* parent)
-    : GameObject(parent, "KeyItem"), hModel_(-1), ItemKill(false)
+    : GameObject(parent, "KeyItem"), hModel_(-1),ItemKill(false)
 {
 }
 
@@ -60,3 +61,12 @@ void KeyItem::Release()
 {
 }
 
+void KeyItem::OnCollision(GameObject* pTarget)
+{
+    if (pTarget->GetObjectName() == "Player")
+    {
+        //当たったときの処理
+        //pTarget->KillMe();//当たった弾を消す
+        this->KillMe();//自分を消す
+    }
+}
