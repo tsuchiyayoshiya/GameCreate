@@ -5,6 +5,7 @@
 class KeyItem : public GameObject
 {
 	int hModel_;
+	
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

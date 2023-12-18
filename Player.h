@@ -10,6 +10,8 @@ class Player : public GameObject
 	XMFLOAT3 prevPosition_;
 
 	Stage* pStage;
+
+	bool ItemKill;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

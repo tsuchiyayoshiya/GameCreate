@@ -12,7 +12,7 @@
 
 //コンストラクタ
 KeyItem::KeyItem(GameObject* parent)
-    : GameObject(parent, "KeyItem"), hModel_(-1)
+    : GameObject(parent, "KeyItem"), hModel_(-1), ItemKill(false)
 {
 }
 

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "KeyItem.h"
 
 #include "Engine/SphereCollider.h"
 #include "Engine/Camera.h"
@@ -9,7 +10,7 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr)
+	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), ItemKill(false)
 {
 	pStage = (Stage*)FindObject("Stage");
 }
@@ -179,11 +180,18 @@ void Player::Release()
 //何かに当たった
 void Player::OnCollision(GameObject* pTarget)
 {
+	
 	//弾に当たったとき
 	if (pTarget->GetObjectName() == "KeyItem")
 	{
+		
 		//当たったときの処理
 		pTarget->KillMe();//当たった弾を消す
-		//this->KillMe();
+		
+		ItemKill = true;
+	}
+	if (ItemKill == true)
+	{
+		Initialize<KeyItem>(this);
 	}
 }
