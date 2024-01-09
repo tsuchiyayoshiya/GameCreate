@@ -8,6 +8,7 @@
 #include "Engine/Image.h"
 
 
+
 //コンストラクタ
 PlayScene::PlayScene(GameObject* parent)
     : GameObject(parent, "PlayScene"),hModel_(-1)
@@ -22,7 +23,9 @@ void PlayScene::Initialize()
     Camera::SetTarget(XMFLOAT3(7.5, 2, 3));
     Instantiate<Stage>(this);
     Instantiate<Player>(this);
+    for(int i = 0;i<6;i++){
     Instantiate<KeyItem>(this);
+    }
    // void KeyItem::OnCollision(GameObject * pTarget);
 }
 
