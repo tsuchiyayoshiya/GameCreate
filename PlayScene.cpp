@@ -6,6 +6,7 @@
 
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
+#include "Engine/SceneManager.h"
 
 
 
@@ -26,6 +27,13 @@ void PlayScene::Initialize()
     for(int i = 0;i<6;i++){
     Instantiate<KeyItem>(this);
     }
+    // 鍵をすべて取り終わったときの処理
+   // if (FindObject("KeyItem") == nullptr)
+   // {
+    //    SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");//クリアシーンを表示する
+    //    pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+   // }
+    
    // void KeyItem::OnCollision(GameObject * pTarget);
 }
 

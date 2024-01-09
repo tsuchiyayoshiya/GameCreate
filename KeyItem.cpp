@@ -20,7 +20,7 @@ KeyItem::KeyItem(GameObject* parent)
 //‰Šú‰»
 void KeyItem::Initialize()
 {
-    transform_.position_ = { (float)(rand() % 12 + 1),1,(float)(rand() % 8ddddddddd + 2) };
+    transform_.position_ = { (float)(rand() % 12 + 1),1,(float)(rand() % 8 + 2) };
     transform_.rotate_.y = 180;
     transform_.scale_ = { 0.2,0.2,0.2 };
 
