@@ -3,6 +3,7 @@
 #include"Player.h"
 #include "Stage.h"
 #include"KeyItem.h"
+#include"Door.h"
 
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
@@ -27,6 +28,7 @@ void PlayScene::Initialize()
     for(int i = 0;i<6;i++){
     Instantiate<KeyItem>(this);
     }
+    Instantiate<Door>(this);
     // Œ®‚ğ‚·‚×‚Äæ‚èI‚í‚Á‚½‚Æ‚«‚Ìˆ—
    // if (FindObject("KeyItem") == nullptr)
    // {

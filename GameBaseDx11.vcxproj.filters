@@ -101,6 +101,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="KeyItem.cpp" />
     <ClCompile Include="Complete.cpp" />
+    <ClCompile Include="Door.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -178,6 +179,7 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="KeyItem.h" />
     <ClInclude Include="Complete.h" />
+    <ClInclude Include="Door.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
