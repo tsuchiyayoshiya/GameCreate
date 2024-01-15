@@ -25,7 +25,7 @@ void PlayScene::Initialize()
     Camera::SetTarget(XMFLOAT3(7.5, 2, 3));
     Instantiate<Stage>(this);
     Instantiate<Player>(this);
-    for(int i = 0;i<6;i++){
+    for (int i = 0; i < 6; i++){
     Instantiate<KeyItem>(this);
     }
     Instantiate<Door>(this);

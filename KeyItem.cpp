@@ -98,9 +98,11 @@ void KeyItem::OnCollision(GameObject* pTarget)
         //pTarget->KillMe();//“–‚½‚Á‚½’e‚ğÁ‚·
         this->KillMe();//©•ª‚ğÁ‚·
 
-        ItemKill = true;
+       // Instantiate<KeyItem>(this);
+        //ItemKill = true;
     }
 }
+
 /*
 void KeyItem::CheckSkill()
 {

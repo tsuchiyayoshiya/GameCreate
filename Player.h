@@ -8,11 +8,10 @@ class Player : public GameObject
 {
 	int hModel_;    //ƒ‚ƒfƒ‹”Ô†
 	int nowHp_, maxHp_;
+	bool ItemKill;
 	XMFLOAT3 prevPosition_;
 
 	Stage* pStage;
-
-	
 
 	Text* pText;
 
@@ -33,5 +32,5 @@ public:
 	//ŠJ•ú
 	void Release() override;
 
-	void OnCollision(GameObject* pTarget);
+	//void OnCollision(GameObject* pTarget);
 };

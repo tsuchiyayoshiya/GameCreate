@@ -10,7 +10,7 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), pText(nullptr)
+	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), pText(nullptr),ItemKill(false)
 {
 	pStage = (Stage*)FindObject("Stage");
 }
@@ -167,7 +167,7 @@ void Player::Update()
 	
 }
 
-
+/*
 void Player::OnCollision(GameObject* pTarget)
 {
 	if (pTarget->GetObjectName() == "KeyItem")
@@ -176,10 +176,17 @@ void Player::OnCollision(GameObject* pTarget)
 		pTarget->KillMe();//当たった弾を消す
 		//this->KillMe();//自分を消す
 
+		Instantiate<KeyItem>(this);
 		//ItemKill = true;
 	}
-}
+	/*
+	if (ItemKill == true)
+	{
 
+	}
+
+}
+*/
 //描画
 void Player::Draw()
 {
