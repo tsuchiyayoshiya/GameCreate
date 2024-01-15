@@ -167,6 +167,19 @@ void Player::Update()
 	
 }
 
+
+void Player::OnCollision(GameObject* pTarget)
+{
+	if (pTarget->GetObjectName() == "KeyItem")
+	{
+		//“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
+		pTarget->KillMe();//“–‚½‚Á‚½’e‚ğÁ‚·
+		//this->KillMe();//©•ª‚ğÁ‚·
+
+		//ItemKill = true;
+	}
+}
+
 //•`‰æ
 void Player::Draw()
 {
