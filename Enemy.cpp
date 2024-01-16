@@ -23,7 +23,8 @@ void Enemy::Initialize()
 void Enemy::Update()
 {
     
-  //  transform_.position_.x += 5;
+    transform_.position_.x += 5;
+    /*
     if (transform_.position_.x += 5)
     {
         turn = true;
@@ -36,7 +37,7 @@ void Enemy::Update()
     {
         transform_.position_.x += 0.5;
     }
-    
+    */
 }
 
 //•`‰æ
