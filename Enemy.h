@@ -2,16 +2,13 @@
 #include "Engine/GameObject.h"
 
 //テストシーンを管理するクラス
-class Door : public GameObject
+class Enemy : public GameObject
 {
-	int hModel_;
-
-protected:
-	
+	int hModel_;    //画像番号
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	Door(GameObject* parent);
+	Enemy(GameObject* parent);
 
 	//初期化
 	void Initialize() override;
@@ -24,6 +21,4 @@ public:
 
 	//開放
 	void Release() override;
-
-	void OnCollision(GameObject* pTarget) override;
 };

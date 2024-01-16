@@ -7,10 +7,9 @@
 #include "Engine/Input.h"
 #include "Engine/Debug.h"
 
-
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), pText(nullptr),ItemKill(false)
+	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), pText(nullptr),ItemKill(false),ItemCount_(0)
 {
 	pStage = (Stage*)FindObject("Stage");
 }
@@ -167,33 +166,21 @@ void Player::Update()
 	
 }
 
-/*
+
 void Player::OnCollision(GameObject* pTarget)
 {
+	GameObject* pGameObject = FindObject("KeyItem");
 	if (pTarget->GetObjectName() == "KeyItem")
 	{
-		//当たったときの処理
-		pTarget->KillMe();//当たった弾を消す
-		//this->KillMe();//自分を消す
-
-		Instantiate<KeyItem>(this);
-		//ItemKill = true;
+		ItemCount_++;
 	}
-	/*
-	if (ItemKill == true)
-	{
-
-	}
-
 }
-*/
+
 //描画
 void Player::Draw()
 {
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
-
-
 }
 
 //開放

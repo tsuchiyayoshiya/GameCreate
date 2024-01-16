@@ -1,5 +1,7 @@
 #include "Door.h"
+#include "Player.h"
 
+#include "Engine/BoxCollider.h"
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
 #include "Engine/Model.h"
@@ -15,7 +17,7 @@ Door::Door(GameObject* parent)
 void Door::Initialize()
 {
     transform_.scale_ = { 0.5,0.5,0.5 };
-    transform_.position_ = { 10,4.5,5};
+    transform_.position_ = { 10, 0, 10 };
     hModel_ = Model::Load("door.fbx");
     assert(hModel_ >= 0);
 }
@@ -23,6 +25,13 @@ void Door::Initialize()
 //XV
 void Door::Update()
 {
+    //Œ®‚ğ‚·‚×‚ÄŠ“¾‚µ‚½‚Ìˆ—
+    Player* pPlayer = (Player*)FindObject("Player");
+    if (pPlayer->getItemCount() == 11)
+    {
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(0.5, 0.5, 0.5));
+        AddCollider(collision);
+    }
 }
 
 //•`‰æ
@@ -30,6 +39,15 @@ void Door::Draw()
 {
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
+}
+
+void Door::OnCollision(GameObject* pTarget)
+{
+    if (pTarget->GetObjectName() == "Player")
+    {
+        //“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
+        this->KillMe();//©•ª‚ğÁ‚·   
+    }
 }
 
 //ŠJ•ú

@@ -128,6 +128,7 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Complete.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine\Audio.cpp" />
     <ClCompile Include="Engine\BillBoard.cpp" />
     <ClCompile Include="Engine\BoxCollider.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Complete.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine\Audio.h" />
     <ClInclude Include="Engine\BillBoard.h" />
     <ClInclude Include="Engine\BoxCollider.h" />

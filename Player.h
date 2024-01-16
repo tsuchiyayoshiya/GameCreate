@@ -9,6 +9,8 @@ class Player : public GameObject
 	int hModel_;    //モデル番号
 	int nowHp_, maxHp_;
 	bool ItemKill;
+	int ItemCount_;
+	
 	XMFLOAT3 prevPosition_;
 
 	Stage* pStage;
@@ -16,6 +18,7 @@ class Player : public GameObject
 	Text* pText;
 
 public:
+	
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
 	Player(GameObject* parent);
@@ -32,5 +35,15 @@ public:
 	//開放
 	void Release() override;
 
-	//void OnCollision(GameObject* pTarget);
+	void OnCollision(GameObject* pTarget);
+
+    //鍵の所得情報を確保するゲッター
+	/*
+	void setItemCount(int Count){
+		ItemCount_ = Count;
+	}
+	*/
+     int getItemCount()  {
+		 return ItemCount_;
+	 }
 };

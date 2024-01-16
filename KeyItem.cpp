@@ -34,6 +34,8 @@ void KeyItem::Initialize()
 void KeyItem::Update()
 {
     bool yPosition = false;
+
+
     /*
     transform_.position_.y += 0.01f;
     if (transform_.position_.y == 1)
@@ -45,6 +47,8 @@ void KeyItem::Update()
         transform_.position_.y -= 0.01f;
     }
     */
+
+    
 }
 
 //•`‰æ
@@ -97,9 +101,6 @@ void KeyItem::OnCollision(GameObject* pTarget)
         //“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
         //pTarget->KillMe();//“–‚½‚Á‚½’e‚ğÁ‚·
         this->KillMe();//©•ª‚ğÁ‚·
-
-       // Instantiate<KeyItem>(this);
-        //ItemKill = true;
     }
 }
 

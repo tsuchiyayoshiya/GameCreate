@@ -4,6 +4,7 @@
 #include "Stage.h"
 #include"KeyItem.h"
 #include"Door.h"
+#include"Enemy.h"
 
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
@@ -29,14 +30,7 @@ void PlayScene::Initialize()
     Instantiate<KeyItem>(this);
     }
     Instantiate<Door>(this);
-    // 鍵をすべて取り終わったときの処理
-   // if (FindObject("KeyItem") == nullptr)
-   // {
-    //    SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");//クリアシーンを表示する
-    //    pSceneManager->ChangeScene(SCENE_ID_CLEAR);
-   // }
-    
-   // void KeyItem::OnCollision(GameObject * pTarget);
+    Instantiate<Enemy>(this);  
 }
 
 //更新
