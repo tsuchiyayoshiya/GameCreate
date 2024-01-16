@@ -4,7 +4,7 @@
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
-    : GameObject(parent, "Enemy"), hModel_(-1)
+    : GameObject(parent, "Enemy"), hModel_(-1),turn(false)
 {
 }
 
@@ -22,6 +22,21 @@ void Enemy::Initialize()
 //更新
 void Enemy::Update()
 {
+    
+  //  transform_.position_.x += 5;
+    if (transform_.position_.x += 5)
+    {
+        turn = true;
+    }
+    else if (turn == true)
+    {
+        transform_.position_.x -= 0.5;
+    }
+    else
+    {
+        transform_.position_.x += 0.5;
+    }
+    
 }
 
 //描画

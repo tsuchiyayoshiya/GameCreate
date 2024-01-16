@@ -5,6 +5,7 @@
 class Enemy : public GameObject
 {
 	int hModel_;    //画像番号
+	bool turn;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
