@@ -7,9 +7,15 @@
 #include "Engine/Input.h"
 #include "Engine/Debug.h"
 
+#define CAM_TYPE_FIXED 0 //固定
+#define CAM_TYPE_TPS_NO_ROT 1 //三人称（回転無し）
+#define CAM_TYPE_TPS 2        //三人称
+#define CAM_TYPE_FPS 3        //一人称
+#define CAM_TYPE_MAX 4 
+
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), pText(nullptr),ItemKill(false),ItemCount_(0)
+	: GameObject(parent, "Player"), hModel_(-1), pStage(nullptr), pText(nullptr),ItemKill(false),ItemCount_(0), camType_(1)
 {
 	pStage = (Stage*)FindObject("Stage");
 }
@@ -27,10 +33,7 @@ void Player::Initialize()
 	hModel_ = Model::Load("Player.fbx");
 	assert(hModel_ >= 0);
 
-	transform_.position_.x = 7.5;
-	transform_.position_.z = 3;
-
-	//transform_.rotate_.y = 5.0f;
+	transform_.position_ = { 7.5,0.5,3 };
 }
 
 //更新
@@ -162,7 +165,61 @@ void Player::Update()
 		transform_.position_.z = (float)((int)transform_.position_.z) + 0.3f;
 	}
 
-	
+
+	if (Input::IsKeyDown(DIK_E))
+	{
+		camType_ += 1;
+		if (camType_ == CAM_TYPE_MAX)
+		{
+			camType_ = CAM_TYPE_FIXED;
+		}
+		//Debug::Log(camType_, true);
+	}
+
+	//戦車の現在値をベクトル型に変換
+	XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
+	//フレーム移動ベクトル
+	XMVECTOR fMove = { 0.0f, 0.0f, 0.1f, 0.0f };
+	//transform_.rotate_.y度回転させる行列を作成
+	XMMATRIX mRotY;
+	mRotY = XMMatrixRotationY(XMConvertToRadians(transform_.rotate_.y));
+	//移動ベクトルを変形（戦車と同じ向きに回転）させる
+	fMove = XMVector3TransformCoord(fMove, mRotY);
+
+	XMVECTOR vCam;
+	XMFLOAT3 camTag = transform_.position_;
+	XMFLOAT3 camPos = transform_.position_;
+
+	switch (camType_)
+	{
+	case CAM_TYPE_FIXED:
+		Camera::SetPosition(XMFLOAT3(0, 50, -20));
+		Camera::SetTarget(XMFLOAT3(0, 0, 0));
+		break;
+	case CAM_TYPE_TPS_NO_ROT:
+		Camera::SetTarget(transform_.position_);
+		XMFLOAT3 camPos = transform_.position_;
+		camPos.y += 5;
+		camPos.z -= 10;
+		Camera::SetPosition(camPos);
+		break;
+	case CAM_TYPE_TPS:
+		Camera::SetTarget(transform_.position_);
+		vCam = { 0, 5, -5, 0 };
+		vCam = XMVector3TransformCoord(vCam, mRotY);
+		//XMFLOAT3 camPos;
+		XMStoreFloat3(&camPos, vPos + vCam);
+		Camera::SetPosition(camPos);
+		break;
+	case CAM_TYPE_FPS:
+		vCam = { 0,0,0,0 };
+		XMStoreFloat3(&camTag, vPos + fMove);
+		Camera::SetTarget(camTag);
+		vCam = XMVector3TransformCoord(vCam, mRotY);
+		XMStoreFloat3(&camPos, vPos + vCam);
+		Camera::SetPosition(camPos);
+		break;
+	}
 	
 }
 

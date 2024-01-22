@@ -45,8 +45,8 @@ void Door::OnCollision(GameObject* pTarget)
 {
     if (pTarget->GetObjectName() == "Player")
     {
-        //“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
-        this->KillMe();//Ž©•ª‚ðÁ‚·   
+        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+        pSceneManager->ChangeScene(SCENE_ID_NEXT);
     }
 }
 

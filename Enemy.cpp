@@ -11,8 +11,6 @@ Enemy::Enemy(GameObject* parent)
 //‰Šú‰»
 void Enemy::Initialize()
 {
-    
-
     transform_.scale_ = { 0.5,0.5,0.5 };
     transform_.position_ = { 4, 0, 4 };
     transform_.rotate_ = { 0, 180, 0 };

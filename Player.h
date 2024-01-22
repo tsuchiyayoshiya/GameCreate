@@ -11,6 +11,8 @@ class Player : public GameObject
 	bool ItemKill;
 	int ItemCount_;
 	
+	int camType_;
+
 	XMFLOAT3 prevPosition_;
 
 	Stage* pStage;
