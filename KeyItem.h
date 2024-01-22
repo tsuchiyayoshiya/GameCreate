@@ -1,13 +1,17 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-
+enum
+{
+	TYPE_KEY,
+};
 
 //テストシーンを管理するクラス
 class KeyItem : public GameObject
 {
-	int hModel_;
+	int hModel_[TYPE_KEY];
 	bool ItemKill;
+	int** table_;
 public:
 
 	enum ProgressKey

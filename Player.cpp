@@ -27,6 +27,7 @@ void Player::Initialize()
 	pText = new Text;
 	pText->Initialize();
 
+
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0.2, 0), 0.5f);
 	AddCollider(collision);
 	//モデルデータのロード

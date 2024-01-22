@@ -9,12 +9,19 @@
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
 #include "Engine/Model.h"
+#include "Engine/CsvReader.h"
 
 
 //コンストラクタ
 KeyItem::KeyItem(GameObject* parent)
-    : GameObject(parent, "KeyItem"), hModel_(-1),ItemKill(false)
+    : GameObject(parent, "KeyItem"), hModel_{-1,-1}, ItemKill(false), table_(nullptr)
 {
+    CsvReader csv;
+    csv.Load("map2.csv");
+
+
+    int Key = csv.GetWidth();
+    table_ = new int* [Key];
 }
 
 //初期化
@@ -26,67 +33,48 @@ void KeyItem::Initialize()
 
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, -0.3f, 0), XMFLOAT3(0.5, 0.5, 0.5));
     AddCollider(collision);
-    hModel_ = Model::Load("Key.fbx");
-    assert(hModel_ >= 0);
+
+    const char* fileName[] = {
+     "Key.fbx"
+    };
+    //モデルデータのロード
+    for (int i = 0; i < TYPE_KEY; i++)
+    {
+        hModel_[i] = Model::Load(fileName[i]);
+        assert(hModel_[i] >= 0);
+    }
 }
 
 //更新
 void KeyItem::Update()
 {
-    bool yPosition = false;
-
-
-    /*
-    transform_.position_.y += 0.01f;
-    if (transform_.position_.y == 1)
-    {
-        yPosition = true;
-    }
-    else if (yPosition = true)
-    {
-        transform_.position_.y -= 0.01f;
-    }
-    */
-
-    
+    bool yPosition = false;   
 }
 
 //描画
 void KeyItem::Draw()
 {
     
-    Model::SetTransform(hModel_, transform_);
-    Model::Draw(hModel_);
+    Transform blockTrans;
+
+    for (int x = 0; x < 51; x++)
+    {
+        for (int z = 0; z < 51; z++)
+        {
+            blockTrans.position_.x = x;
+            blockTrans.position_.z = z;
+
+            int type = table_[x][z];
+
+
+
+            Model::SetTransform(hModel_[type], blockTrans);
+            Model::Draw(hModel_[type]);
+        }
+    }
 
     
-    /*
-    Transform aform, bform,cform,dform,eform;
-    aform.position_ = { 4,1,5 };
-    aform.rotate_.y = 180;
-    aform.scale_ = { 0.2,0.2,0.2 };
-    Model::SetTransform(hModel_, aform);
-    Model::Draw(hModel_);
-    bform.position_ = { 3,1,5 };
-    bform.rotate_.y = 180;
-    bform.scale_ = { 0.2,0.2,0.2 };
-    Model::SetTransform(hModel_, bform);
-    Model::Draw(hModel_);
-    cform.position_ = { 2,1,5 };
-    cform.rotate_.y = 180;
-    cform.scale_ = { 0.2,0.2,0.2 };
-    Model::SetTransform(hModel_, cform);
-    Model::Draw(hModel_);
-    dform.position_ = { 1,1,5 };
-    dform.rotate_.y = 180;
-    dform.scale_ = { 0.2,0.2,0.2 };
-    Model::SetTransform(hModel_, dform);
-    Model::Draw(hModel_);
-    eform.position_ = { 0,1,5 };
-    eform.rotate_.y = 180;
-    eform.scale_ = { 0.2,0.2,0.2 };
-    Model::SetTransform(hModel_, eform);
-    Model::Draw(hModel_);
-    */
+    
 }   
 
 //開放
@@ -103,13 +91,3 @@ void KeyItem::OnCollision(GameObject* pTarget)
         this->KillMe();//自分を消す
     }
 }
-
-/*
-void KeyItem::CheckSkill()
-{
-    if (ItemKill == true)
-    {
-        Instantiate<KeyItem>(this);
-    }
-}
-*/

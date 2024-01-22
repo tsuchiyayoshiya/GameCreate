@@ -1,6 +1,7 @@
 #include "Stage.h"
 #include "Engine/Model.h"
 #include "Engine/CsvReader.h"
+#include "KeyItem.h"
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
@@ -34,9 +35,11 @@ Stage::Stage(GameObject* parent)
 //初期化
 void Stage::Initialize()
 {
+	//KeyItem* pKeyItem = (KeyItem*)FindObject("KeyItem");
+	//Instantiate<KeyItem>(this);
 	const char* fileName[] = {
 		"Floor1.fbx",
-		"Wall.fbx"
+		"Wall.fbx",
 	};
 
 	//モデルデータのロード
@@ -58,9 +61,9 @@ void Stage::Draw()
 {
 	Transform blockTrans;
 
-	for (int x = 0; x < 15; x++)
+	for (int x = 0; x < 51; x++)
 	{
-		for (int z = 0; z < 15; z++)
+		for (int z = 0; z < 51; z++)
 		{
 			blockTrans.position_.x = x;
 			blockTrans.position_.z = z;
