@@ -6,6 +6,11 @@
 //テストシーンを管理するクラス
 class Player : public GameObject
 {
+	enum GetKey
+	{
+
+	};
+
 	int hModel_;    //モデル番号
 	bool ItemKill;
 	int ItemCount_;
