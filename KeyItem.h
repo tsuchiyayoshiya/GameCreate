@@ -21,7 +21,11 @@ public:
 	//‰Šú‰»
 	void Initialize() override;
 
+	bool IsPositionTooCloseToOtherModels() const;
+
 	void AdjustPositionWithGap(float gap);
+
+	bool IsPositionInsideWalls() const;
 
 	//XV
 	void Update() override;
