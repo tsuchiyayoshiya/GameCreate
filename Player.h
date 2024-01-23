@@ -41,12 +41,6 @@ public:
 
 	void OnCollision(GameObject* pTarget);
 
-    //鍵の所得情報を確保するゲッター
-	/*
-	void setItemCount(int Count){
-		ItemCount_ = Count;
-	}
-	*/
      int getItemCount()  {
 		 return ItemCount_;
 	 }

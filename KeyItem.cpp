@@ -19,6 +19,7 @@
 KeyItem::KeyItem(GameObject* parent)
     : GameObject(parent, "KeyItem"), hModel_(-1), ItemKill(false)
 {
+    pStage = (Stage*)FindObject("Stage");
 }
 
 //初期化
@@ -71,6 +72,16 @@ void KeyItem::Update()
 //描画
 void KeyItem::Draw()
 {
+    /*
+    const float wallX = 50.0f; // 壁のX方向位置
+    const float wallZ = 50.0f; // 壁のZ方向位置
+    const float wallSize = 15.0f; // 壁のサイズ
+    const float wall
+    if (pStage->IsWall(wallSize,))
+    {
+
+    }
+    */
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
 }   

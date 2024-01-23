@@ -6,6 +6,7 @@ class KeyItem : public GameObject
 {
 	int hModel_;
 	bool ItemKill;
+	Stage* pStage;
 public:
 
 	enum ProgressKey
