@@ -23,8 +23,6 @@ public:
 
 	bool IsPositionTooCloseToOtherModels() const;
 
-	void AdjustPositionWithGap(float gap);
-
 	bool IsPositionInsideWalls() const;
 
 	//çXêV

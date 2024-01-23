@@ -7,8 +7,6 @@
 Stage::Stage(GameObject* parent)
 	: GameObject(parent, "Stage"), hModel_{ -1, -1 }, table_(nullptr)
 {
-	//ZeroMemory(table_, sizeof(table_));//“ñŸŒ³”z—ñ‚ğŸè‚É0‚É‚µ‚Ä‚­‚ê‚é
-
 	CsvReader csv;
 	csv.Load("map.csv");
 
@@ -69,8 +67,6 @@ void Stage::Draw()
 			blockTrans.position_.z = z;
 
 			int type = table_[x][z];
-
-
 
 			Model::SetTransform(hModel_[type], blockTrans);
 			Model::Draw(hModel_[type]);

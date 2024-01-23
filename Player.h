@@ -7,16 +7,13 @@
 class Player : public GameObject
 {
 	int hModel_;    //ƒ‚ƒfƒ‹”Ô†
-	int nowHp_, maxHp_;
 	bool ItemKill;
 	int ItemCount_;
 	
 	int camType_;
 
 	XMFLOAT3 prevPosition_;
-
 	Stage* pStage;
-
 	Text* pText;
 
 public:

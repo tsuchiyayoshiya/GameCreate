@@ -174,10 +174,9 @@ void Player::Update()
 		{
 			camType_ = CAM_TYPE_FIXED;
 		}
-		//Debug::Log(camType_, true);
 	}
 
-	//戦車の現在値をベクトル型に変換
+	//プレイヤーの現在値をベクトル型に変換
 	XMVECTOR vPos = XMLoadFloat3(&transform_.position_);
 	//フレーム移動ベクトル
 	XMVECTOR fMove = { 0.0f, 0.0f, 0.1f, 0.0f };
@@ -200,8 +199,8 @@ void Player::Update()
 	case CAM_TYPE_TPS_NO_ROT:
 		Camera::SetTarget(transform_.position_);
 		XMFLOAT3 camPos = transform_.position_;
-		camPos.y += 5;
-		camPos.z -= 10;
+		camPos.y += 7;
+		camPos.z -= 5;
 		Camera::SetPosition(camPos);
 		break;
 	case CAM_TYPE_TPS:
@@ -222,6 +221,8 @@ void Player::Update()
 		break;
 	}
 	
+	
+
 }
 
 
