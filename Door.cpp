@@ -17,7 +17,7 @@ Door::Door(GameObject* parent)
 void Door::Initialize()
 {
     transform_.scale_ = { 0.5,0.5,0.5 };
-    transform_.position_ = { 10, 0, 10 };
+    transform_.position_ = { 49, 0, 49};
     hModel_ = Model::Load("door.fbx");
     assert(hModel_ >= 0);
 }

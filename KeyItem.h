@@ -1,17 +1,11 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-enum
-{
-	TYPE_KEY,
-};
-
 //テストシーンを管理するクラス
 class KeyItem : public GameObject
 {
-	int hModel_[TYPE_KEY];
+	int hModel_;
 	bool ItemKill;
-	int** table_;
 public:
 
 	enum ProgressKey
@@ -26,6 +20,8 @@ public:
 
 	//初期化
 	void Initialize() override;
+
+	void AdjustPositionWithGap(float gap);
 
 	//更新
 	void Update() override;

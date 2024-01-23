@@ -3,6 +3,8 @@
 #include"Player.h"
 #include "Stage.h"
 #include "Complete.h"
+#include <cstdlib> // rand()関数を使用するためのヘッダー
+#include <ctime>   // time()関数を使用するためのヘッダー
 
 #include "Engine/SphereCollider.h"
 #include "Engine/BoxCollider.h"
@@ -14,67 +16,53 @@
 
 //コンストラクタ
 KeyItem::KeyItem(GameObject* parent)
-    : GameObject(parent, "KeyItem"), hModel_{-1,-1}, ItemKill(false), table_(nullptr)
+    : GameObject(parent, "KeyItem"), hModel_(-1), ItemKill(false)
 {
-    CsvReader csv;
-    csv.Load("map2.csv");
-
-
-    int Key = csv.GetWidth();
-    table_ = new int* [Key];
 }
 
 //初期化
 void KeyItem::Initialize()
 {
-    transform_.position_ = { (float)(rand() % 12 + 1),1,(float)(rand() % 8 + 2) };
-    transform_.rotate_.y = 180;
-    transform_.scale_ = { 0.2,0.2,0.2 };
+    // モデルデータのロード
+    hModel_ = Model::Load("Key.fbx");
+    assert(hModel_ >= 0);
 
+    // 初期位置のランダム設定
+    transform_.position_ = { (float)(rand() % 45 + 1), 1, (float)(rand() % 45 + 1) };
+
+    // 回転とスケールの設定
+    transform_.rotate_.y = 180;
+    transform_.scale_ = { 0.2, 0.2, 0.2 };
+
+    // 20の間隔で座標を調整
+    AdjustPositionWithGap(15.0f);
+
+    // 衝突判定用のボックスコライダーの作成と追加
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, -0.3f, 0), XMFLOAT3(0.5, 0.5, 0.5));
     AddCollider(collision);
+}
 
-    const char* fileName[] = {
-     "Key.fbx"
-    };
-    //モデルデータのロード
-    for (int i = 0; i < TYPE_KEY; i++)
-    {
-        hModel_[i] = Model::Load(fileName[i]);
-        assert(hModel_[i] >= 0);
-    }
+// 20の間隔で座標を調整する関数
+void KeyItem::AdjustPositionWithGap(float gap)
+{
+    int gapCountX = static_cast<int>(transform_.position_.x / gap);
+    int gapCountZ = static_cast<int>(transform_.position_.z / gap);
+
+    transform_.position_.x = gapCountX * gap + gap / 2.0f;
+    transform_.position_.z = gapCountZ * gap + gap / 2.0f;
 }
 
 //更新
 void KeyItem::Update()
 {
-    bool yPosition = false;   
+    
 }
 
 //描画
 void KeyItem::Draw()
 {
-    
-    Transform blockTrans;
-
-    for (int x = 0; x < 51; x++)
-    {
-        for (int z = 0; z < 51; z++)
-        {
-            blockTrans.position_.x = x;
-            blockTrans.position_.z = z;
-
-            int type = table_[x][z];
-
-
-
-            Model::SetTransform(hModel_[type], blockTrans);
-            Model::Draw(hModel_[type]);
-        }
-    }
-
-    
-    
+    Model::SetTransform(hModel_, transform_);
+    Model::Draw(hModel_);
 }   
 
 //開放
