@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Engine/BoxCollider.h"
 #include "Engine/Image.h"
 #include "Engine/Model.h"
 
@@ -17,6 +18,9 @@ void Enemy::Initialize()
 
     hModel_ = Model::Load("Enemy.fbx");
     assert(hModel_ >= 0);
+
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(0.8, 0.8, 0.8));
+    AddCollider(collision);
 }
 
 //XV
@@ -51,6 +55,17 @@ void Enemy::Draw()
 {
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
+}
+
+//‰½‚©‚É“–‚½‚Á‚½
+void Enemy::OnCollision(GameObject* pTarget)
+{
+    //“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
+     //’e‚É“–‚½‚Á‚½‚Æ‚«
+    if (pTarget->GetObjectName() == "Player")
+    {
+        this->KillMe();
+    }
 }
 
 //ŠJ•ú

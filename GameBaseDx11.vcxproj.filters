@@ -106,6 +106,7 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Next.cpp" />
     <ClCompile Include="Stage2.cpp" />
+    <ClCompile Include="MakeMaze.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -188,6 +189,7 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="Next.h" />
     <ClInclude Include="Stage2.h" />
+    <ClInclude Include="MakeMaze.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

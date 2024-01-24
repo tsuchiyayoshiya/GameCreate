@@ -1,5 +1,4 @@
 #pragma once
-#include "Stage2.h"
 #include <ctime>
 #include <iostream>
 #include <vector>
@@ -7,21 +6,21 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
-/*
-//ÉRÉìÉXÉgÉâÉNÉ^
-Stage2::Stage2(GameObject* parent)
-    : GameObject(parent, "Stage2"), hModel_(-1)
-{
-}
+#include "MakeMaze.h"
 
+namespace maze {
 
+    using vsize_t = std::vector<size_t>;
+    using vvsize_t = std::vector<vsize_t>;
 
-//èâä˙âª
-void Stage2::Initialize()
-{
-    
+    //ê∂ê¨É`ÉFÉbÉN
+    const bool mapCheck(const vvsize_t& map_) {
+        if (map_.size() <= 2 || map_.data()->size() <= 2) return false;
+        if ((map_.size() & 1) == 0 || (map_.data()->size() & 1) == 0) return false;
+        return true;
+    }
     //åäå@ÇË
-    void mazeDig(vvsize_t & map_, size_t x_, size_t y_, const size_t id_wall_, const size_t id_empty_);
+    void mazeDig(vvsize_t& map_, size_t x_, size_t y_, const size_t id_wall_, const size_t id_empty_)
     {
         if (!mapCheck(map_)) return;
         int32_t dx, dy;
@@ -50,7 +49,7 @@ void Stage2::Initialize()
         return;
     }
     //åoòHíTçı
-    void mazeRootLoop(vvsize_t & map_, const size_t x_, const size_t y_, const size_t id_empty_, const size_t id_root_)
+    void mazeRootLoop(vvsize_t& map_, const size_t x_, const size_t y_, const size_t id_empty_, const size_t id_root_)
     {
         //åoòHíTçıèÛãµ
         static bool b = true;
@@ -69,13 +68,13 @@ void Stage2::Initialize()
         if (b) map_[x_][y_] = id_empty_;
         return;
     }
-    void mazeRoot(vvsize_t & map_, const size_t id_empty_, const size_t id_root_)
+    void mazeRoot(vvsize_t& map_, const size_t id_empty_, const size_t id_root_)
     {
         if (!mapCheck(map_)) return;
         mazeRootLoop(map_, 1, 1, id_empty_, id_root_);
     }
     //èoóÕ
-    void mazeOutput(const vvsize_t & map_, const size_t id_wall_, const size_t id_empty_)
+    void mazeOutput(const vvsize_t& map_, const size_t id_wall_, const size_t id_empty_)
     {
         if (!mapCheck(map_)) return;
         const size_t i_max = map_.size();
@@ -90,7 +89,7 @@ void Stage2::Initialize()
         }
     }
     //ñ¿òHê∂ê¨
-    const size_t mazeMakeLoop(vvsize_t & map_, const size_t id_wall_, const size_t id_empty_, std::unique_ptr<size_t[]>&select_x, std::unique_ptr<size_t[]>&select_y)
+    const size_t mazeMakeLoop(vvsize_t& map_, const size_t id_wall_, const size_t id_empty_, std::unique_ptr<size_t[]>& select_x, std::unique_ptr<size_t[]>& select_y)
     {
         size_t ii = 0;
         const size_t i_max = map_.size() - 1;
@@ -113,7 +112,7 @@ void Stage2::Initialize()
             }
         return ii;
     }
-    void mazeMake(vvsize_t & map_, const size_t id_wall_, const size_t id_empty_)
+    void mazeMake(vvsize_t& map_, const size_t id_wall_, const size_t id_empty_)
     {
         if (map_.size() <= 2 || map_.data()->size() <= 2) return;
         if ((map_.size() & 1) == 0 || (map_.data()->size() & 1) == 0) return;
@@ -164,7 +163,7 @@ void Stage2::Initialize()
     }
 
     // CSVå`éÆÇ≈ñ¿òHÇèoóÕ
-    void mazeOutputCSV(const vvsize_t & map_, const size_t id_wall_, const size_t id_empty_, const std::string & filename)
+    void mazeOutputCSV(const vvsize_t& map_, const size_t id_wall_, const size_t id_empty_, const std::string& filename)
     {
         if (!mapCheck(map_)) return;
 
@@ -194,21 +193,30 @@ void Stage2::Initialize()
 
 
 }
+//ñ¿òHÇÃâ°ïù
+constexpr size_t size_x = 51;
+//ñ¿òHÇÃècïù
+constexpr size_t size_y = 51;
 
-//çXêV
-void Stage2::Update()
+//ñ¿òHÇ…ê›íuÇ∑ÇÈï®ëÃÇÃID
+enum :size_t {
+    id_empty_,//í òH
+    id_wall_,//ï«
+    id_root_,//ÉSÅ[ÉãÇ‹Ç≈ÇÃìπ
+};
+
+int SaveMap()
 {
-    
+    // ñ¿òHê∂ê¨
+    const std::string csvFilename = "maze_output.csv";
+    maze::createMaze(size_x, size_y, id_empty_, id_wall_, id_root_);
+    const maze::vvsize_t mazeMap = maze::createMazeMap(size_x, size_y, id_empty_, id_wall_, id_root_);
+    maze::mazeOutputCSV(mazeMap, id_wall_, id_empty_, csvFilename);
+
+    //ñ¿òHê∂ê¨
+    return maze::createMaze(size_x, size_y, id_empty_, id_wall_, id_root_);
 }
 
-//ï`âÊ
-void Stage2::Draw()
-{
-
-}
-
-//äJï˙
-void Stage2::Release()
+void MakeMaze::Release()
 {
 }
-*/

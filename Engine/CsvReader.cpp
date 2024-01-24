@@ -27,7 +27,7 @@ bool CsvReader::Load(std::string fileName)
 	//ファイルを開く
 	HANDLE hFile;
 	hFile = CreateFile(fileName.c_str(), GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-
+	
 	//開けなかった
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
@@ -36,7 +36,7 @@ bool CsvReader::Load(std::string fileName)
 
 		return false;
 	}
-
+	
 	//ファイルのサイズ（文字数）を調べる
 	DWORD fileSize = GetFileSize(hFile, NULL);
 

@@ -2,13 +2,16 @@
 #include "Engine/Model.h"
 #include "Engine/CsvReader.h"
 #include "KeyItem.h"
+#include "MakeMaze.cpp"
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
 	: GameObject(parent, "Stage"), hModel_{ -1, -1 }, table_(nullptr)
 {
+	SaveMap();
+
 	CsvReader csv;
-	csv.Load("map.csv");
+	csv.Load("maze_output.csv");
 
 	int width = csv.GetWidth();
 	int height = csv.GetHeight();
@@ -72,15 +75,13 @@ void Stage::Draw()
 			Model::Draw(hModel_[type]);
 		}
 	}
-
-
 }
 
 //開放
 void Stage::Release()
 {
 	CsvReader csv;
-	csv.Load("map.csv");
+	csv.Load("maze_output.csv");
 
 	int width = csv.GetWidth();
 	int height = csv.GetHeight();
@@ -95,11 +96,5 @@ void Stage::Release()
 
 bool Stage::IsWall(int x, int z)
 {
-	/*
-	if(table_[x][z] == 1)
-		return true;
-	else
-		return false;
-	*/
 	return table_[x][z];
 }

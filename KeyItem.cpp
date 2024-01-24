@@ -14,7 +14,6 @@
 #include "Engine/CsvReader.h"
 #include "Engine/SceneManager.h"
 
-
 //コンストラクタ
 KeyItem::KeyItem(GameObject* parent)
     : GameObject(parent, "KeyItem"), hModel_(-1), ItemKill(false)
@@ -30,13 +29,11 @@ void KeyItem::Initialize()
     assert(hModel_ >= 0);
 
     // 初期位置のランダム設定
-    transform_.position_ = { (float)(rand() % 45 + 1), 1, (float)(rand() % 45 + 1) };
-
-    // 初期位置のランダム設定
-    do {
-        transform_.position_ = { (float)(rand() % 45 + 1), 1, (float)(rand() % 45 + 1) };
-    } while (IsPositionInsideWalls());
-
+    do{
+        transform_.position_ = { (float)(rand() % 51), 1, (float)(rand() % 51) };
+    } while (pStage->IsWall(transform_.position_.x, transform_.position_.z));
+    transform_.position_.x += 0.5;
+    transform_.position_.z += 0.2;
 
     // 回転とスケールの設定
     transform_.rotate_.y = 180;
@@ -44,7 +41,7 @@ void KeyItem::Initialize()
 
     // 衝突判定用のボックスコライダーの作成と追加
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, -0.3f, 0), XMFLOAT3(0.5, 0.5, 0.5));
-    AddCollider(collision);
+    AddCollider(collision);   
 }
 
 // 壁に埋まっていないかを判定する関数
@@ -52,7 +49,7 @@ bool KeyItem::IsPositionInsideWalls() const
 {
     const float wallX = 50.0f; // 壁のX方向位置
     const float wallZ = 50.0f; // 壁のZ方向位置
-    const float wallSize = 15.0f; // 壁のサイズ
+    const float wallSize = 10.0f; // 壁のサイズ
 
     if (transform_.position_.x > wallX - wallSize && transform_.position_.x < wallX + wallSize &&
         transform_.position_.z > wallZ - wallSize && transform_.position_.z < wallZ + wallSize) {
@@ -65,23 +62,12 @@ bool KeyItem::IsPositionInsideWalls() const
 //更新
 void KeyItem::Update()
 {
-    GameObject* pGameObject = FindObject("Stage");
     
 }
 
 //描画
 void KeyItem::Draw()
 {
-    /*
-    const float wallX = 50.0f; // 壁のX方向位置
-    const float wallZ = 50.0f; // 壁のZ方向位置
-    const float wallSize = 15.0f; // 壁のサイズ
-    const float wall
-    if (pStage->IsWall(wallSize,))
-    {
-
-    }
-    */
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
 }   

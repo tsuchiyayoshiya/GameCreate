@@ -153,6 +153,7 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="KeyItem.cpp" />
+    <ClCompile Include="MakeMaze.cpp" />
     <ClCompile Include="Next.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="KeyItem.h" />
+    <ClInclude Include="MakeMaze.h" />
     <ClInclude Include="Next.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />

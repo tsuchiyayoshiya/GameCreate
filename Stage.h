@@ -1,4 +1,5 @@
 #pragma once
+#include"MakeMaze.h"
 #include "Engine/GameObject.h"
 
 enum
@@ -14,7 +15,6 @@ class Stage : public GameObject
 	int hModel_[TYPE_MAX];    //モデル番号
 
 	int** table_;
-
 
 public:
 	//コンストラクタ
