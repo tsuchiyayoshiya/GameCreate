@@ -9,7 +9,6 @@ Stage::Stage(GameObject* parent)
 	: GameObject(parent, "Stage"), hModel_{ -1, -1 }, table_(nullptr)
 {
 	SaveMap();
-
 	CsvReader csv;
 	csv.Load("maze_output.csv");
 
