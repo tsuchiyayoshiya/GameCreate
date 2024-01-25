@@ -2,16 +2,15 @@
 #include "Engine/Model.h"
 #include "Engine/CsvReader.h"
 #include "KeyItem.h"
-#include "MakeMaze.cpp"
+
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
 	: GameObject(parent, "Stage"), hModel_{ -1, -1 }, table_(nullptr)
 {
-	SaveMap();
 
 	CsvReader csv;
-	csv.Load("maze_output.csv");
+	csv.Load("map.csv");
 
 	int width = csv.GetWidth();
 	int height = csv.GetHeight();
@@ -81,7 +80,7 @@ void Stage::Draw()
 void Stage::Release()
 {
 	CsvReader csv;
-	csv.Load("maze_output.csv");
+	csv.Load("map.csv");
 
 	int width = csv.GetWidth();
 	int height = csv.GetHeight();

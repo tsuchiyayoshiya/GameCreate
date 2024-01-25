@@ -1,5 +1,4 @@
 #pragma once
-#include"MakeMaze.h"
 #include "Engine/GameObject.h"
 
 enum
