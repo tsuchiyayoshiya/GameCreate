@@ -152,11 +152,13 @@
     <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
+    <ClCompile Include="KeyCsv.cpp" />
     <ClCompile Include="KeyItem.cpp" />
     <ClCompile Include="Next.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StageFinal.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,11 +189,13 @@
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
+    <ClInclude Include="KeyCsv.h" />
     <ClInclude Include="KeyItem.h" />
     <ClInclude Include="Next.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageFinal.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
   <ItemGroup>

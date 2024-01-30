@@ -32,10 +32,10 @@ void Enemy::Update()
     movementCount += 1.0f;
 
     // movementCount‚ª60‚ð’´‚¦‚½‚çturn‚ðtrue‚É‚µ
-    if (movementCount > 60.0f){
+    if (movementCount > 30.0f){
         turn = true;
     }
-    if (movementCount > 120.0f)
+    if (movementCount > 60.0f)
     {
         movementCount = 0.0f;
         turn = false;

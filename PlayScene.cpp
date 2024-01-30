@@ -9,6 +9,7 @@
 #include "Engine/Camera.h"
 #include "Engine/Image.h"
 #include "Engine/SceneManager.h"
+#include "KeyCsv.h"
 
 
 
@@ -23,11 +24,12 @@ void PlayScene::Initialize()
 {
     Instantiate<Stage>(this);
     Instantiate<Player>(this);
-    for (int i = 0; i < 6; i++){
-    Instantiate<KeyItem>(this);
-    }
-    Instantiate<Door>(this);
-    Instantiate<Enemy>(this);  
+    Instantiate<KeyCsv>(this);
+   // for (int i = 0; i < 6; i++){
+    //Instantiate<KeyItem>(this);
+   // }
+   // Instantiate<Door>(this);
+   // Instantiate<Enemy>(this);  
 }
 
 //XV
