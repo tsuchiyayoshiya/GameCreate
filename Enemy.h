@@ -4,7 +4,7 @@
 //テストシーンを管理するクラス
 class Enemy : public GameObject
 {
-	int hModel_;    //画像番号
+	int hModel_[6];    //画像番号
 	bool turn;
 	float playerX;
 	int movementCount;
