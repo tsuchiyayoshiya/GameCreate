@@ -5,7 +5,8 @@
 class Door : public GameObject
 {
 	int hModel_;
-
+	int hPict_;
+	bool Open_;
 protected:
 	
 public:

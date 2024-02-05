@@ -152,7 +152,6 @@
     <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
-    <ClCompile Include="KeyCsv.cpp" />
     <ClCompile Include="KeyItem.cpp" />
     <ClCompile Include="Next.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -189,7 +188,6 @@
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
-    <ClInclude Include="KeyCsv.h" />
     <ClInclude Include="KeyItem.h" />
     <ClInclude Include="Next.h" />
     <ClInclude Include="Player.h" />

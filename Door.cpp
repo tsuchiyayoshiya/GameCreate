@@ -9,7 +9,7 @@
 
 //コンストラクタ
 Door::Door(GameObject* parent)
-    : GameObject(parent, "Door"), hModel_(-1)
+    : GameObject(parent, "Door"), hModel_(-1),hPict_(-1),Open_(false)
 {
 }
 
@@ -20,6 +20,9 @@ void Door::Initialize()
     transform_.position_ = { 49, 0, 49};
     hModel_ = Model::Load("door.fbx");
     assert(hModel_ >= 0);
+    //画像データのロード
+    hPict_ = Image::Load("OpenDoor.png");
+    assert(hPict_ >= 0);
 }
 
 //更新
@@ -31,6 +34,7 @@ void Door::Update()
     {
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(0.5, 0.5, 0.5));
         AddCollider(collision);
+        Open_ = true;
     }
 }
 
@@ -39,6 +43,12 @@ void Door::Draw()
 {
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
+    if (Open_ == true)
+    {
+        //画像データのロード
+        hPict_ = Image::Load("OpenDoor.jpg");
+        assert(hPict_ >= 0);
+    }
 }
 
 void Door::OnCollision(GameObject* pTarget)

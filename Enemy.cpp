@@ -7,7 +7,7 @@
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
-    : GameObject(parent, "Enemy"), hModel_{-1}, turn(false), playerX(0.0f), movementCount(1.0)
+    : GameObject(parent, "Enemy"), hModel_(-1), turn(false), playerX(0.0f), movementCount(1.0)
 {
 }
 
@@ -17,12 +17,10 @@ void Enemy::Initialize()
     transform_.scale_ = { 0.5,0.5,0.5 };
     transform_.position_ = { 4, 0, 4 };
     transform_.rotate_ = { 0, 180, 0 };
-
-    for(int i = 0;i<6;i++)
-    { 
-    hModel_[i] = Model::Load("Enemy.fbx");
-    assert(hModel_[i] >= 0);
-    }
+ 
+    hModel_ = Model::Load("Enemy.fbx");
+    assert(hModel_ >= 0);
+    
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(0.8, 0.8, 0.8));
     AddCollider(collision);
 }
@@ -57,11 +55,8 @@ void Enemy::Update()
 //描画
 void Enemy::Draw()
 {
-    for(int i = 0;i<6;i++)
-    {
-    Model::SetTransform(hModel_[i], transform_);
-    Model::Draw(hModel_[i]);
-    }
+    Model::SetTransform(hModel_, transform_);
+    Model::Draw(hModel_);
 }
 
 //何かに当たった
