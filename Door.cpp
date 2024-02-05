@@ -28,6 +28,13 @@ void Door::Initialize()
 //更新
 void Door::Update()
 {
+    float timer;
+    timer += 1.0f;
+
+    while (timer == 1800)
+    {
+
+    }
     //鍵をすべて所得した時の処理
     Player* pPlayer = (Player*)FindObject("Player");
     if (pPlayer->getItemCount() == 11)
@@ -46,7 +53,7 @@ void Door::Draw()
     if (Open_ == true)
     {
         //画像データのロード
-        hPict_ = Image::Load("OpenDoor.jpg");
+        hPict_ = Image::Load("OpenDoor.png");
         assert(hPict_ >= 0);
     }
 }
