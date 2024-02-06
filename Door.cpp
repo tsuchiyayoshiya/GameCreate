@@ -28,13 +28,8 @@ void Door::Initialize()
 //XV
 void Door::Update()
 {
-    float timer;
-    timer += 1.0f;
+    
 
-    while (timer == 1800)
-    {
-
-    }
     //Œ®‚ð‚·‚×‚ÄŠ“¾‚µ‚½Žž‚Ìˆ—
     Player* pPlayer = (Player*)FindObject("Player");
     if (pPlayer->getItemCount() == 11)
