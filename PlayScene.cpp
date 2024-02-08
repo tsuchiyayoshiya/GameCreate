@@ -29,6 +29,7 @@ void PlayScene::Initialize()
     Instantiate<KeyItem>(this);
     }
     Instantiate<Door>(this);
+    for(int i = 0;i<6;i++)
    Instantiate<Enemy>(this);  
 }
 

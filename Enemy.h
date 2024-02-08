@@ -4,12 +4,13 @@
 //テストシーンを管理するクラス
 class Enemy : public GameObject
 {
-	int hModel_;    
-	int hModel_1;
-	int hModel_2;
-	int hModel_3;
-	int hModel_4;
-	int hModel_5;
+    int hModel_;    
+	int hModel1_;
+	int hModel2_;
+	int hModel3_;
+	int hModel4_;
+	int hModel5_;
+
 	bool turn;
 	float playerX;
 	int movementCount;
