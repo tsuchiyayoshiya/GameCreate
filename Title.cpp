@@ -22,12 +22,16 @@ Title::Title(GameObject* parent)
 //初期化
 void Title::Initialize()
 {
+   
     //画像データのロード
     hPict1_ = Image::Load("Title.jpg");
     assert(hPict1_ >= 0);
     //画像データのロード
     hPict_ = Image::Load("Title.png");
     assert(hPict_ >= 0);
+    //画像データのロード
+    hPict2_ = Image::Load("Please.png");
+    assert(hPict2_ >= 0);
 }
 
 //更新
@@ -47,7 +51,10 @@ void Title::Draw()
     Image::Draw(hPict1_);
     Image::SetTransform(hPict_, transform_);
     Image::Draw(hPict_);
-    
+    Transform Plz;
+    Plz.position_.y = -0.5;
+    Image::SetTransform(hPict2_, Plz);
+    Image::Draw(hPict2_);
 }
 
 //開放

@@ -5,6 +5,11 @@
 class Enemy : public GameObject
 {
 	int hModel_;    
+	int hModel_1;
+	int hModel_2;
+	int hModel_3;
+	int hModel_4;
+	int hModel_5;
 	bool turn;
 	float playerX;
 	int movementCount;

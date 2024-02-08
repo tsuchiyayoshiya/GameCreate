@@ -6,6 +6,7 @@ class Title : public GameObject
 {
 	int hPict_;
 	int hPict1_;
+	int hPict2_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
