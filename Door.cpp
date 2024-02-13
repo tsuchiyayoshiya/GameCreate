@@ -9,7 +9,7 @@
 
 //コンストラクタ
 Door::Door(GameObject* parent)
-    : GameObject(parent, "Door"), hModel_(-1),hPict_(-1),Open_(false)
+    : GameObject(parent, "Door"), hModel_(-1), hPict_(-1), Open_(false), Timer(0.0f) // Timer を初期化
 {
 }
 
@@ -28,7 +28,7 @@ void Door::Initialize()
 //更新
 void Door::Update()
 {
-    
+   
 
     //鍵をすべて所得した時の処理
     Player* pPlayer = (Player*)FindObject("Player");
@@ -43,14 +43,20 @@ void Door::Update()
 //描画
 void Door::Draw()
 {
-    Model::SetTransform(hModel_, transform_);
-    Model::Draw(hModel_);
+    Transform pict;
     if (Open_ == true)
     {
-        //画像データのロード
-        hPict_ = Image::Load("OpenDoor.png");
-        assert(hPict_ >= 0);
+        Timer += 1.0f;
+
+        if (Timer < 60) // Timer が 60 未満の場合にのみ画像を描画する
+        {
+            Image::SetTransform(hPict_, pict);
+            Image::Draw(hPict_);
+        }
     }
+    Model::SetTransform(hModel_, transform_);
+    Model::Draw(hModel_);
+    
 }
 
 void Door::OnCollision(GameObject* pTarget)
